@@ -12,7 +12,6 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-
 	tls2 "github.com/maheshopsmx/argocd-extension-metrics/tree/main/shared/tls"
 )
 
