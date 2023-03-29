@@ -7,6 +7,10 @@ on:
     branches:
       - main
       - dev-*
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Git tag to build release from"
 
 defaults:
   run:
