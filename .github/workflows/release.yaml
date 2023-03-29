@@ -25,22 +25,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install UI dependencies
-        run: yarn --cwd ui install
-
-      - name: Build UI asset
-        run: yarn --cwd ui build
-
-      - name: Draft release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ github.event.inputs.tag }}
-          draft: true
-          files: |
-            extensions/resource-metrics/resource-metrics-extention/ui/dist/extension.tar
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Setup Go
         uses: actions/setup-go@v3.1.0
         with:
@@ -56,7 +40,23 @@ jobs:
         with:
           name: binaries
           path: dist
-                  
+
+      - name: Install UI dependencies
+        run: yarn --cwd extensions/resource-metrics/resource-metrics-extention/ui install
+
+      - name: Build UI asset
+        run: yarn --cwd extensions/resource-metrics/resource-metrics-extention/ui build
+
+      - name: Draft release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event.inputs.tag }}
+          draft: true
+          files: |
+            extensions/resource-metrics/resource-metrics-extention/ui/dist/extension.tar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   build-push-image:
     name: Build & Push
     needs: [ build-binaries ]
