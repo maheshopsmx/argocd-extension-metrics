@@ -12,7 +12,8 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	tls2 "github.com/maheshopsmx/argocd-extension-metrics/tree/main/shared/tls"
+	tls2 "github.com/argoproj-labs/argocd-metric-ext-server/shared/tls"
+	      github.com/argoproj-labs/argocd-metric-ext-server/shared/tls
 )
 
 const PROMETHEUS_TYPE = "prometheus"
