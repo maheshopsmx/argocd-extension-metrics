@@ -47,7 +47,7 @@ jobs:
           tag_name: ${{ github.event.inputs.tag }}
           draft: true
           files: |
-            resource-metrics-extention/ui/dist/extension.tar
+            extensions/resource-metrics/resource-metrics-extention/ui/dist/extension.tar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
