@@ -13,7 +13,7 @@ defaults:
 jobs:
   build-binaries:
     runs-on: ubuntu-20.04
-    if: github.repository == 'argoproj-labs/argocd-extension-metrics'
+    if: github.repository == 'maheshopsmx/argocd-extension-metrics'
     name: Build binaries
     steps:
       - name: Checkout
@@ -37,7 +37,7 @@ jobs:
     name: Build & Push
     needs: [ build-binaries ]
     runs-on: ubuntu-20.04
-    if: github.repository == 'argoproj-labs/argocd-extension-metrics'
+    if: github.repository == 'maheshopsmx/argocd-extension-metrics'
     steps:
       - uses: actions/checkout@v3
       - name: Set up Docker Buildx
