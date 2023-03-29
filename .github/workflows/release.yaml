@@ -21,16 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Go
-        uses: actions/setup-go@v3.1.0
-        with:
-          go-version: 1.18
-
-      - name: Build binaries
-        run: |
-          make build
-          chmod -R +x dist
-        
       - name: Install UI dependencies
         run: yarn --cwd ui install
 
@@ -46,7 +36,16 @@ jobs:
             extensions/resource-metrics/resource-metrics-extention/ui/dist/extension.tar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
+      - name: Setup Go
+        uses: actions/setup-go@v3.1.0
+        with:
+          go-version: 1.18
+
+      - name: Build binaries
+        run: |
+          make build
+          chmod -R +x dist       
 
       - name: store artifacts
         uses: actions/upload-artifact@v3
