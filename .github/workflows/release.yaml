@@ -34,7 +34,23 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: binaries
-          path: dist 
+          path: dist
+      - name: Install UI dependencies
+        run: yarn --cwd ui install
+
+      - name: Build UI asset
+        run: yarn --cwd ui build
+
+      - name: Draft release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event.inputs.tag }}
+          draft: true
+          files: |
+            resource-metrics-extention/ui/dist/extension.tar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
   build-push-image:
     name: Build & Push
     needs: [ build-binaries ]
