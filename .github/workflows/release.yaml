@@ -30,19 +30,7 @@ jobs:
         run: |
           make build
           chmod -R +x dist
-          
-      - name: store artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: binaries
-          path: dist
-          
-  build-ui:
-    name: Build UI Assets
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2      
+        
       - name: Install UI dependencies
         run: yarn --cwd ui install
 
@@ -59,6 +47,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
+
+      - name: store artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: binaries
+          path: dist
+                  
   build-push-image:
     name: Build & Push
     needs: [ build-binaries ]
