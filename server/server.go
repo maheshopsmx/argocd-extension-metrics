@@ -11,7 +11,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	tls2 "github.com/sarabala1979/argo-observability/shared/tls"
+	tls2 "Vhttps://github.com/maheshopsmx/argocd-extension-metrics/tree/main/shared/tls"
 )
 
 type O11yServer struct {
